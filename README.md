@@ -37,6 +37,6 @@ Above cases is the simplest example to show how one can use switch to fulfill de
 
 ### Can we do better?
 
-=================================================================================
+=======================================================================
 
 ## Option 2: Avoid using switch statement and move business logic in enum.
