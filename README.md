@@ -10,11 +10,12 @@ Expose API which will take account type and principal amount as input and return
 
 ## Option 1: Using switch statement and enum account type
 Below option is the natural option for most of us. It's easy to understand and pretty straight forward
-<code>
 
+<code>
     private enum AccountType{
         SAVING_ACCOUNT,CURRENT_ACCOUNT, MORTGAGE_ACCOUNT, SENIOR_CITIZEN_SAVING_ACCOUNT,CHILDREN_SAVING_ACCOUNT
     }
+    
     @GetMapping("/calculateInterestAmount/option1")
     public BigDecimal calculateInterestAmount(@RequestHeader String accountType
             , @RequestHeader BigDecimal principalAmount){
@@ -29,11 +30,13 @@ Below option is the natural option for most of us. It's easy to understand and p
 
         }
     }
-
-}
 </code>
+
 <b>Problems with this option1:</b> When a new AccountType is added to enum, Developer need to find all the places where the AccountType enum is used.
 Above cases is the simplest example to show how one can use switch to fulfill desired result. The switch demands default case even it will never be triggered.   
-##Can we do better?
+
+### Can we do better?
+
 ==================================================================================================================
+
 ## Option 2: Avoid using switch statement and move business logic in enum.
