@@ -1,16 +1,23 @@
-# CleanProgramming
-The projects show different implementation of writing clean program
+package com.effective.clean.programming.option1;
 
-## Problem statement:
-Expose API which will take account type and principal amount as input and return interest.
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 
-<b>Input:</b> accountType, principalAmount.
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
-<b>Output:</b> Interest amount. 
 
-## Option 1: Using switch statement and enum account type
-Below option is the natural option for most of us. It's easy to understand and pretty straight forward
-<code>
+@RestController()
+public class Option1Controller {
+
+    private final BigDecimal SAVING_ACCOUNT_INTEREST_RATE = BigDecimal.valueOf(1.2);
+    private final BigDecimal CURRENT_ACCOUNT_INTEREST_RATE = BigDecimal.valueOf(0.0);
+    private final BigDecimal MORTGAGE_ACCOUNT_INTEREST_RATE = BigDecimal.valueOf(2.4);
+    private final BigDecimal SENIOR_CITIZEN_SAVING_ACCOUNT_INTEREST_RATE = BigDecimal.valueOf(1.8);
+    private final BigDecimal CHILDREN_SAVING_ACCOUNT_INTEREST_RATE = BigDecimal.valueOf(1.6);
+
 
     private enum AccountType{
         SAVING_ACCOUNT,CURRENT_ACCOUNT, MORTGAGE_ACCOUNT, SENIOR_CITIZEN_SAVING_ACCOUNT,CHILDREN_SAVING_ACCOUNT
@@ -31,9 +38,3 @@ Below option is the natural option for most of us. It's easy to understand and p
     }
 
 }
-</code>
-<b>Problems with this option1:</b> When a new AccountType is added to enum, Developer need to find all the places where the AccountType enum is used.
-Above cases is the simplest example to show how one can use switch to fulfill desired result. The switch demands default case even it will never be triggered.   
-##Can we do better?
-==================================================================================================================
-## Option 2: Avoid using switch statement and move business logic in enum.
